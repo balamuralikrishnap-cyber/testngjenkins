@@ -9,17 +9,32 @@ pipeline {
             }
         }
 
-        stage('Build & Test') {
+        stage('Start Selenium Grid') {
             steps {
-                echo 'Running Maven tests on agent1'
-                bat '"C:/apache-maven-3.9.11/bin/mvn.cmd" clean test -DtestData1=MavenData1 -DtestData2=MavenData2 -DtestData3=MavenData3 -DtestData4=MavenData4'
+                echo 'Starting Dockerized Selenium Grid...'
+                bat 'docker-compose up -d'
             }
         }
 
-        stage('Post Build') {
+        stage('Build & Test') {
             steps {
-                echo 'Build complete!'
+                echo 'Running tests on Selenium Grid...'
+                bat '"C:/apache-maven-3.9.11/bin/mvn.cmd" clean test -DhubURL=http://localhost:4444/wd/hub'
             }
+        }
+
+        stage('Stop Selenium Grid') {
+            steps {
+                echo 'Stopping Dockerized Selenium Grid...'
+                bat 'docker-compose down'
+            }
+        }
+    }
+
+    post {
+        always {
+            echo 'Cleaning up workspace...'
+            cleanWs()
         }
     }
 }
