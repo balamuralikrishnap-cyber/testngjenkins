@@ -18,7 +18,7 @@ public class TEST1 {
 
     @Parameters("testData2")
     @Test
-    public void secondTest(@Optional("Defaultdata2") String testDataFromXML) {
+    public void secondTest(@Optional("Defaultdata2") String testDataFromXML) throws InterruptedException {
 
         String finalTestData = System.getProperty("testData2");
         if (finalTestData == null || finalTestData.trim().isEmpty()) {
