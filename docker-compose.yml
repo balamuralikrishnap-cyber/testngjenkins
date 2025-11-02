@@ -1,6 +1,15 @@
 services:
-  selenium-standalone:
-    image: selenium/standalone-chrome:4.19.0-20251031
-    container_name: selenium-standalone
+  selenium-hub:
+    image: selenium/hub:4.19.0
+    container_name: selenium-hub
     ports:
       - "4444:4444"
+
+  selenium-node-chrome:
+    image: selenium/node-chrome:4.19.0
+    volumes:
+      - /dev/shm:/dev/shm
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
