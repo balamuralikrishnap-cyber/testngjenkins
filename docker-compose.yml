@@ -1,6 +1,6 @@
 services:
-selenium-standalone:
-image: selenium/standalone-chrome:4.19.0-20251031
-container_name: selenium-standalone
-ports:
-  - "4444:4444"
+  selenium-standalone:
+    image: selenium/standalone-chrome:4.19.0-20251031
+    container_name: selenium-standalone
+    ports:
+      - "4444:4444"
