@@ -1,0 +1,18 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite1" parallel="tests">
+    <test name="Test1">
+        <parameter name="testData1" value="data1 from TestNG"/>
+        <parameter name="testData2" value="data2 from TestNG"/>
+        <classes>
+            <class name="TEST1"/>
+        </classes>
+    </test>
+
+    <test name="Test2">
+        <parameter name="testData3" value="data3 from TestNG"/>
+        <parameter name="testData4" value="data4 from TestNG"/>
+        <classes>
+            <class name="TEST2"/>
+        </classes>
+    </test>
+</suite>
