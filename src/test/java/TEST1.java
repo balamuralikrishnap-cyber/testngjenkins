@@ -25,6 +25,7 @@ public class TEST1 {
             finalTestData = testDataFromXML;
         }
         System.out.println("second test: " + finalTestData);
+        Thread.sleep(120000);
 
     }
 }
